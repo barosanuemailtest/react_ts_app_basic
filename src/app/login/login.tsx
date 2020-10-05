@@ -9,18 +9,19 @@ interface CustomEvent {
     target: HTMLInputElement
 }
 
-export class Login extends React.Component {
+export class Login extends React.Component<{}, Credentials> {
+
+
+    state: Credentials;
 
     public constructor(props: any) {
         super(props);
-        this.setPassword = this.setPassword.bind(this);
-        this.setPassword = this.setUserName.bind(this);
+        this.state = {
+            userName: "",
+            password: ""
+        }
     }
 
-    state: Credentials = {
-        userName: "",
-        password: ""
-    }
 
     private setPassword(event: CustomEvent) {
         this.state.password = event.target.value;
@@ -41,12 +42,12 @@ export class Login extends React.Component {
             <form>
                 <label>
                     Name:
-                <input type="text" value={this.state.userName} name="name" onChange={this.setUserName.bind(this)} />
+                <input type="text" value={this.state.userName} name="name" />
                 </label>
                 <br />
                 <label>
                     Password:
-                <input type="password" value={this.state.password} name="name" onChange={this.setPassword.bind(this)} />
+                <input type="password" value={this.state.password} name="name" />
                 </label>
                 <br />
                 <input type="submit" value="Login" onClick={this.handleSubmit} />
