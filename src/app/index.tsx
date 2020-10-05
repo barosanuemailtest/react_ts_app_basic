@@ -10,8 +10,7 @@ ReactDOM.render(
         <h1>Welcome to the best app ever!</h1>
         <h2>Please login</h2>
         <Login />
-        <Car color='blue' />
-        <ShoppingBasket products={["Apples", "Bananas"]} />
+
     </div>,
     document.querySelector('#root')
 )

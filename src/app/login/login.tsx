@@ -11,24 +11,10 @@ interface CustomEvent {
 
 export class Login extends React.Component<{}, Credentials> {
 
-
-    state: Credentials;
-
-    public constructor(props: any) {
-        super(props);
-        this.state = {
-            userName: "",
-            password: ""
-        }
-    }
-
-
-    private setPassword(event: CustomEvent) {
-        this.state.password = event.target.value;
-    }
-    private setUserName(event: CustomEvent) {
-        this.state.userName = event.target.value;
-    }
+    state: Credentials = {
+        password: "",
+        userName: ""
+    };
 
     private handleSubmit(event: React.SyntheticEvent) {
         event.preventDefault();
@@ -36,21 +22,21 @@ export class Login extends React.Component<{}, Credentials> {
         console.log('password: ' + this.state.password);
     }
 
+    private setPassword(event: CustomEvent) {
+        this.setState({ password: event.target.value });
+    }
+    private setUserName(event: CustomEvent) {
+        this.setState({ userName: event.target.value });
+    }
+
 
     render() {
+
         return (
-            <form>
-                <label>
-                    Name:
-                <input type="text" value={this.state.userName} name="name" />
-                </label>
-                <br />
-                <label>
-                    Password:
-                <input type="password" value={this.state.password} name="name" />
-                </label>
-                <br />
-                <input type="submit" value="Login" onClick={this.handleSubmit} />
+            <form onSubmit={e => this.handleSubmit(e)}>
+                <input name="login" value={this.state.userName} onChange={e => this.setUserName(e)} />
+                <input name="password" value={this.state.password} onChange={e => this.setPassword(e)} type="password" />
+                <input type="submit" value="Login" />
             </form>
         )
     }
