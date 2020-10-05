@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
     mode: "production",
-    entry: "./src/index.tsx",
-//    devtool: "inline-source-map",
+    entry: "./src/app/index.tsx",
+    //    devtool: "inline-source-map",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, 'dist')
@@ -17,7 +17,7 @@ module.exports = {
             }
         ]
     },
-    watch: true,
+    //    watch: true,
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     }

@@ -1,4 +1,5 @@
-.primary-header {
-    color: red;
-    font-size: large;
+.wrapper {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
